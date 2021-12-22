@@ -1,0 +1,59 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2021-12-22T22:21:07.748Z",
+        "line": 5,
+        "name": "GET test to endpoint",
+        "description": "",
+        "id": "request-example-for-udemy;get-test-to-endpoint",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 1219665000,
+              "status": "passed"
+            },
+            "line": 6,
+            "name": "I send a GET request to the endpoint",
+            "match": {
+              "location": "Steps.APISteps.sendGETRequest()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1950906000,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I get a 200 status code",
+            "match": {
+              "arguments": [
+                {
+                  "val": "200",
+                  "offset": 8
+                }
+              ],
+              "location": "Steps.APISteps.expectedStatusCode(int)"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@API"
+          }
+        ]
+      }
+    ],
+    "name": "Request example for Udemy",
+    "description": "",
+    "id": "request-example-for-udemy",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/features/APITest.feature",
+    "tags": []
+  }
+]
