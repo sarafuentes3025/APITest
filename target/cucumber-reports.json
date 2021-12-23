@@ -3,20 +3,20 @@
     "line": 2,
     "elements": [
       {
-        "start_timestamp": "2021-12-23T22:16:08.816Z",
-        "line": 9,
-        "name": "Validate the number of entries in the response",
+        "start_timestamp": "2021-12-23T22:34:53.017Z",
+        "line": 13,
+        "name": "Validate that an element is in the response.",
         "description": "",
-        "id": "request-example-for-udemy;validate-the-number-of-entries-in-the-response",
+        "id": "request-example-for-udemy;validate-that-an-element-is-in-the-response.",
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 1251324000,
+              "duration": 2135947000,
               "status": "passed"
             },
-            "line": 10,
+            "line": 14,
             "name": "I send a GET request to the https://jsonplaceholder.typicode.com URI",
             "match": {
               "arguments": [
@@ -31,23 +31,24 @@
           },
           {
             "result": {
-              "duration": 2081542000,
-              "status": "passed"
+              "error_message": "java.lang.AssertionError: Carlos value was not found.\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.assertTrue(Assert.java:42)\n\tat Steps.APISteps.validateValue(APISteps.java:57)\n\tat ✽.I validate there is a value: Carlos for the response at /users endpoint(file:///Users/sarafuentes/IdeaProjects/APITest/src/test/resources/features/APITest.feature:15)\n",
+              "duration": 3313681000,
+              "status": "failed"
             },
-            "line": 11,
-            "name": "I validate there are 10 items on the /users endpoint",
+            "line": 15,
+            "name": "I validate there is a value: Carlos for the response at /users endpoint",
             "match": {
               "arguments": [
                 {
-                  "val": "10",
-                  "offset": 21
+                  "val": "Carlos",
+                  "offset": 29
                 },
                 {
                   "val": "/users",
-                  "offset": 37
+                  "offset": 56
                 }
               ],
-              "location": "Steps.APISteps.validateSize(int,java.lang.String)"
+              "location": "Steps.APISteps.validateValue(java.lang.String,java.lang.String)"
             },
             "keyword": "Then "
           }

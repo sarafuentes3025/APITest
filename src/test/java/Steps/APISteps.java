@@ -11,6 +11,7 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class APISteps {
 
@@ -44,5 +45,15 @@ public class APISteps {
     int currentSize = jsonResponse.size();
 
     assertEquals(expectedSize, currentSize);
+  }
+
+  @Then("^I validate there is a value: (.+) for the response at (.+) endpoint$")
+  public void validateValue(String expectedValue, String endpoint) {
+    response = request
+        .when()
+        .get(endpoint);
+
+    List<String> jsonResponse = response.jsonPath().getList("username");
+    assertTrue(expectedValue + " value was not found.", jsonResponse.contains(expectedValue));
   }
 }
