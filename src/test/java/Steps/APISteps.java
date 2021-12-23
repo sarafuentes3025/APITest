@@ -7,7 +7,10 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 
 public class APISteps {
 
@@ -15,10 +18,10 @@ public class APISteps {
   private Response response;
   private ValidatableResponse json;
 
-  @Given("^I send a GET request to the endpoint$")
-  public void sendGETRequest() {
+  @Given("^I send a GET request to the (.+) URI$")
+  public void sendGETRequest(String URI) {
     request = given()
-        .baseUri("https://api.github.com")
+        .baseUri(URI)
         .contentType(ContentType.JSON);
   }
 
@@ -29,5 +32,17 @@ public class APISteps {
         .get("/users/sarafuentes3025/repos");
 
     json = response.then().statusCode(expectedStatusCode);
+  }
+
+  @Then("^I validate there are (\\d+) items on the (.+) endpoint$")
+  public void validateSize(int expectedSize, String endpoint) {
+    response = request
+        .when()
+        .get(endpoint);
+
+    List<String> jsonResponse = response.jsonPath().getList("$");
+    int currentSize = jsonResponse.size();
+
+    assertEquals(expectedSize, currentSize);
   }
 }
