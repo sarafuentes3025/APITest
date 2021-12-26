@@ -3,8 +3,8 @@
     "line": 2,
     "elements": [
       {
-        "start_timestamp": "2021-12-23T22:34:53.017Z",
-        "line": 13,
+        "start_timestamp": "2021-12-26T17:24:38.749Z",
+        "line": 17,
         "name": "Validate that an element is in the response.",
         "description": "",
         "id": "request-example-for-udemy;validate-that-an-element-is-in-the-response.",
@@ -13,10 +13,10 @@
         "steps": [
           {
             "result": {
-              "duration": 2135947000,
+              "duration": 995962000,
               "status": "passed"
             },
-            "line": 14,
+            "line": 18,
             "name": "I send a GET request to the https://jsonplaceholder.typicode.com URI",
             "match": {
               "arguments": [
@@ -31,24 +31,23 @@
           },
           {
             "result": {
-              "error_message": "java.lang.AssertionError: Carlos value was not found.\n\tat org.junit.Assert.fail(Assert.java:89)\n\tat org.junit.Assert.assertTrue(Assert.java:42)\n\tat Steps.APISteps.validateValue(APISteps.java:57)\n\tat ✽.I validate there is a value: Carlos for the response at /users endpoint(file:///Users/sarafuentes/IdeaProjects/APITest/src/test/resources/features/APITest.feature:15)\n",
-              "duration": 3313681000,
-              "status": "failed"
+              "duration": 2288806000,
+              "status": "passed"
             },
-            "line": 15,
-            "name": "I validate there is a value: Carlos for the response at /users endpoint",
+            "line": 19,
+            "name": "I can the nested value: Kattie Turnpike on the response at /users endpoint",
             "match": {
               "arguments": [
                 {
-                  "val": "Carlos",
-                  "offset": 29
+                  "val": "Kattie Turnpike",
+                  "offset": 24
                 },
                 {
                   "val": "/users",
-                  "offset": 56
+                  "offset": 59
                 }
               ],
-              "location": "Steps.APISteps.validateValue(java.lang.String,java.lang.String)"
+              "location": "Steps.APISteps.validateNestedValue(java.lang.String,java.lang.String)"
             },
             "keyword": "Then "
           }

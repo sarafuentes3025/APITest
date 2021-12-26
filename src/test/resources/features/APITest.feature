@@ -9,7 +9,11 @@ Feature:  Request example for Udemy
     Given I send a GET request to the https://jsonplaceholder.typicode.com URI
     Then I validate there are 10 items on the /users endpoint
 
+  Scenario: Validate that an element is in the response.
+    Given I send a GET request to the https://jsonplaceholder.typicode.com URI
+    Then I validate there is a value: Kattie Turnpike for the response at /users endpoint
+
   @API
   Scenario: Validate that an element is in the response.
     Given I send a GET request to the https://jsonplaceholder.typicode.com URI
-    Then I validate there is a value: Carlos for the response at /users endpoint
+    Then I can the nested value: Kattie Turnpike on the response at /users endpoint

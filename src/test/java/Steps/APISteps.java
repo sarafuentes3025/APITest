@@ -56,4 +56,14 @@ public class APISteps {
     List<String> jsonResponse = response.jsonPath().getList("username");
     assertTrue(expectedValue + " value was not found.", jsonResponse.contains(expectedValue));
   }
+
+  @Then("^I can the nested value: (.+) on the response at (.+) endpoint$")
+  public void validateNestedValue(String expectedStreet, String endpoint) {
+    response = request
+        .when()
+        .get(endpoint);
+
+    String jsonResponse = response.jsonPath().getString("address.street");
+    assertTrue("The street "+expectedStreet+ " doesn't belong to any user.", jsonResponse.contains(expectedStreet));
+  }
 }
