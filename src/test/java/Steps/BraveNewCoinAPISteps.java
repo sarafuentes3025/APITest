@@ -8,6 +8,8 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
+import java.io.File;
+
 import static io.restassured.RestAssured.given;
 
 public class BraveNewCoinAPISteps {
@@ -27,14 +29,9 @@ public class BraveNewCoinAPISteps {
         .all();
   }
 
-  @When("^I send a POST request with a valid body to the /oauth/token endpoint$")
-  public void sendPOSTRequest(String endpoint) {
-    String requestBody = "{\n" +
-        "    \"audience\": \"https://api.bravenewcoin.com\",\n" +
-        "    \"client_id\": \"oCdQoZoI96ERE9HY3sQ7JmbACfBf55RY\",\n" +
-        "    \"grant_type\": \"client_credentials\"\n" +
-        "}";
-
+  @When("^I send a POST request with a valid (.+) payload to the /oauth/token endpoint$")
+  public void sendPOSTRequest(String endpoint, String payload) {
+    File requestBody = new File("src/test/resources/Payloads/" + payload + ".json");
     response = request
         .when()
         .body(requestBody)
